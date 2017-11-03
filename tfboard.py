@@ -2,17 +2,13 @@ import tensorflow as tf
 import numpy as np
 
 def add_layer(inputs,in_size,out_size,activation_fun=None):
-    with tf.name_scope('all_layers'):
-	with tf.name_scope('weights'):
-    		Weights = tf.Variable(tf.random_normal([in_size,out_size]))
-    	with tf.name_scope('bias'):
-		biases = tf.Variable(tf.zeros([1,out_size])+.1)
-    	with tf.name_scope('wx_plus_b'):
-		Wx_plus_b = tf.matmul(inputs,Weights)+biases
-    	if activation_fun is None:
-        	outputs = Wx_plus_b
-    	else:
-        	outputs = activation_fun(Wx_plus_b)
+    Weights = tf.Variable(tf.random_normal([in_size,out_size]))
+    biases = tf.Variable(tf.zeros([1,out_size])+.1)
+    Wx_plus_b = tf.matmul(inputs,Weights)+biases
+    if activation_fun is None:
+        outputs = Wx_plus_b
+    else:
+        outputs = activation_fun(Wx_plus_b)
     return outputs
 
 with tf.name_scope('all_inputs'):
