@@ -11,7 +11,7 @@ batch_size = 128
 
 n_inputs = 28  # image size 28*28
 n_steps = 28  # time step
-n_hidden_units = 28
+n_hidden_units = 128
 n_classes = 10
 
 ## tf Graph input
