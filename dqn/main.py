@@ -1,6 +1,6 @@
 from maze_env import Maze
 from RL_brain import DeepQNetwork
-def fun_maze():
+def run_maze():
     step = 0 
     for episode in range(300):
         # initialization
@@ -30,12 +30,12 @@ def fun_maze():
 
 if __name__ == "__main__":
     env = Maze()
-    RL = DeepQNetwork(env,n_actions, env.n_features,
+    RL = DeepQNetwork(env.n_actions, env.n_features,
                      learning_rate = .01,
                      reward_decay = .9,
                      e_greedy = .9,
                      replace_target_iter = 200,
-                     memory_size = 2000
+                     memory_size = 2000,
                      )
     env.after(100,run_maze)
     env.mainloop()
