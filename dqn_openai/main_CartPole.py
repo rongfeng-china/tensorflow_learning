@@ -35,7 +35,7 @@ for i_episode in xrange(100):
         r = r1 + r2
         
         ## store in memory    
-        RL.store_transition(observation,action,r,s_)
+        RL.store_transition(observation,action,r,observation_)
  
         # reward for espisode
         ep_r += r
