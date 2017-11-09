@@ -37,5 +37,20 @@ for i_episode in xrange(100):
         ## store in memory    
         RL.store_transition(observation,action,r,s_)
  
-        if total_steps < 200 and (total_steps % 5 == 0):
+        # reward for espisode
+        ep_r += r
+
+        if total_steps > 500:
             RL.learn()
+
+        if done:
+            print 'i_episode: '+str(i_episode)
+            print 'ep_r: %f' %(round(ep_r,2))
+            print 'epsilon: %f' %(round(RL.epsilon,2))
+
+            break
+       
+        observation = observation_
+        total_step += 1
+
+RL.plot_cost()
