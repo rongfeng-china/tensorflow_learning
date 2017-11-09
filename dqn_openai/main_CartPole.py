@@ -25,4 +25,17 @@ for i_episode in xrange(100):
 
     while True:
         env.render()
-        action = RL.choose_action(observation) 
+        action = RL.choose_action(observation)
+        observation_, reward, done, info = env.step(action)
+
+        ## feedback from the environment
+        x, x_dot, theta, theta_dot = observation_
+        r1 = (env.x_threshold-abs(x))/env.x_threshold - .8
+        r2 = (env.theta_threshold_radians - abs(theta))/env.theta_threshold_radians - .5
+        r = r1 + r2
+        
+        ## store in memory    
+        RL.store_transition(observation,action,r,s_)
+ 
+        if total_steps < 200 and (total_steps % 5 == 0):
+            RL.learn()
