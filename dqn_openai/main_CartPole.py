@@ -18,7 +18,7 @@ RL = DeepQNetwork(n_actions = env.action_space.n,
 
 total_steps = 0
 
-for i_episode in xrange(100):
+for i_episode in range(100):
     ## initialization
     observation = env.reset()
     ep_r = 0
@@ -44,13 +44,13 @@ for i_episode in xrange(100):
             RL.learn()
 
         if done:
-            print 'i_episode: '+str(i_episode)
-            print 'ep_r: %f' %(round(ep_r,2))
-            print 'epsilon: %f' %(round(RL.epsilon,2))
+            #print 'i_episode: '+str(i_episode)
+            #print 'ep_r: %f' %(round(ep_r,2))
+            #print 'epsilon: %f' %(round(RL.epsilon,2))
 
             break
        
         observation = observation_
-        total_step += 1
+        total_steps += 1
 
 RL.plot_cost()

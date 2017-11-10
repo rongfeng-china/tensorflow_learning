@@ -1,4 +1,5 @@
 import gym
+import matplotlib.pyplot as plt
 from RL_brain import PolicyGradient
 
 DISPLAY_REWARD_THRESHOLD = 400
@@ -14,11 +15,11 @@ env = env.unwrapped
 RL = PolicyGradient(n_actions = env.action_space.n, 
             n_features = env.observation_space.shape[0],
             learning_rate = 0.02, 
-            reward_decay - .99)
+            reward_decay = .99)
 
 total_steps = 0
 
-for i_episode in xrange(1000):
+for i_episode in range(1000):
     ## initialization
     observation = env.reset()
 
@@ -28,7 +29,7 @@ for i_episode in xrange(1000):
         observation_, reward, done, info = env.step(action)
 
         ## store in memory    
-        RL.store_transition(observation,action,r,observation_)
+        RL.store_transition(observation,action,reward)
  
         if done:
             ep_rs_sum = sum(RL.ep_rs)
@@ -48,5 +49,5 @@ for i_episode in xrange(1000):
             break
         
         observation = observation_
-        total_step += 1
+        total_steps += 1
 

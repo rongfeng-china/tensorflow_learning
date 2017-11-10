@@ -25,7 +25,7 @@ for i_episode in range(10):
         observation_, reward, done, info = env.step(action)
 
         ## feedback from environment
-        position, velocity = observatioin_
+        position, velocity = observation_
         r = abs(position - (-.5))  # r in [0,1]
 
         ## store in memory
@@ -38,9 +38,9 @@ for i_episode in range(10):
             RL.learn()
 
         if done:
-            print 'i_episode: '+str(i_episode)
-            print 'ep_r: %f' %(round(ep_r,2))
-            print 'epsilon: %f' %(round(RL.epsilon,2))
+            print ('i_episode: '+str(i_episode))
+            print ('ep_r: %f' %(round(ep_r,2)))
+            print ('epsilon: %f' %(round(RL.epsilon,2)))
             break
 
         observation = observation_
